@@ -9,7 +9,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: example-greenhouse:${CICD_EXECUTION_SEQUENCE}
+      tag: lawr/example-greenhouse:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
       registry: index.docker.io
     env:
@@ -19,3 +19,4 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
+notification: {}
