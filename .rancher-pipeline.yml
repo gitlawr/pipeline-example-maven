@@ -2,8 +2,8 @@ stages:
 - name: Build
   steps:
   - runScriptConfig:
-      image: lawr/maven:3-jdk-7-cached
-      shellScript: mvn -s /usr/share/maven/ref/settings-docker.xml clean install
+      image: lawr/maven:3-jdk-7
+      shellScript: mvn clean install
 - name: Publish
   steps:
   - publishImageConfig:
