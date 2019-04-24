@@ -10,9 +10,11 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: example-greenhouse:${CICD_EXECUTION_SEQUENCE}
-    env: 
-      DOCKER_HOST: tcp://dind.default:2375
-      PLUGIN_DAEMON_OFF: true
+      pushRemote: true
+      registry: index.docker.io
+    env:
+      DOCKER_HOST: tcp://dind.default:2379
+      PLUGIN_DAEMON_OFF: "true"
 - name: Deploy
   steps:
   - applyYamlConfig:
