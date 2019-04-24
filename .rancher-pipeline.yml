@@ -2,15 +2,17 @@ stages:
 - name: Build
   steps:
   - runScriptConfig:
-      image: maven:3-jdk-7
-      shellScript: |-
-        mvn clean install
+      image: lawr/maven:3-jdk-7
+      shellScript: mvn clean install
 - name: Publish
   steps:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: example-greenhouse:${CICD_EXECUTION_SEQUENCE}
+    env: 
+      DOCKER_HOST: tcp://dind.default:2375
+      PLUGIN_DAEMON_OFF: true
 - name: Deploy
   steps:
   - applyYamlConfig:
